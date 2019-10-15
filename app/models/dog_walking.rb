@@ -41,6 +41,6 @@ class DogWalking < ActiveRecord::Base
   end
 
   def parse_scheduled_at
-    self.scheduled_at = Time.at(schedule)
+    self.scheduled_at = Time.at(schedule.to_i)
   end
 end
