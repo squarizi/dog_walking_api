@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe DogWalking, type: :model do
 
   subject {
-            DogWalking.new(scheduled_at: Time.now, price: 30.50,
+            DogWalking.new(schedule: 1571157571, price: 30.50,
                            duration: :half_hour, latitude: 44.4604788,
                            longitude: -110.8281375, pets_quantity: 4)
           }
@@ -74,7 +74,6 @@ RSpec.describe DogWalking, type: :model do
   end
 
   describe '#time_walking' do
-
     context 'when status is scheduled' do
       let(:time) { '00:00:00' }
 
@@ -103,5 +102,13 @@ RSpec.describe DogWalking, type: :model do
 
       it { expect(subject.time_walking).to eq time }
     end
+  end
+
+  describe '#set_scheduled_at' do
+    let(:scheduled_at) { Time.at(1571157571) }
+
+    before { subject.save }
+
+    it { expect(subject.scheduled_at).to eq scheduled_at }
   end
 end

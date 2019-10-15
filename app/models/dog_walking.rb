@@ -1,10 +1,14 @@
 class DogWalking < ActiveRecord::Base
 
+  attr_accessor :schedule
+
   enum status: { scheduled: 0, on_going: 1, finished: 2 }
 
   enum duration: { half_hour: 30, hour: 60 }
 
-  validates :scheduled_at, :duration, :latitude, :longitude, :pets_quantity, presence: true
+  validates :duration, :latitude, :longitude, :pets_quantity, presence: true
+
+  before_create :parse_scheduled_at
 
   scope :today, -> { where(scheduled_at: Time.now..Time.now.end_of_day) }
 
@@ -34,5 +38,9 @@ class DogWalking < ActiveRecord::Base
     return 0 if scheduled?
     return Time.now - start_walk if on_going?
     return finish_walk - start_walk if finished?
+  end
+
+  def parse_scheduled_at
+    self.scheduled_at = Time.at(schedule)
   end
 end
