@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "9104cef6-cc2a-4b96-8adb-5e06f0250b1b",
+		"name": "dog_hero_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create dog walking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"dog_walking\": {\n\t\t\"duration\": 30,\n\t\t\"scheduled_at\": '2019-10-15 09:10:50',\n\t\t\"pets_quantity\": 2,\n\t\t\"latitude\": 123,\n\t\t\"longitude\": 321\n\t}\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/v1/dogs_walking",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"dogs_walking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start walking",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/v1/dogs_walking/1/start_walking",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"dogs_walking",
+						"1",
+						"start_walking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Finish walking",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/v1/dogs_walking/1/finish_walking",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"dogs_walking",
+						"1",
+						"finish_walking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Walking time",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/v1/dogs_walking/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"dogs_walking",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dog walking show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/v1/dogs_walking?page=1&page_quantity=6",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"dogs_walking"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_quantity",
+							"value": "6"
+						},
+						{
+							"key": "scope",
+							"value": "all",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
