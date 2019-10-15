@@ -111,4 +111,12 @@ RSpec.describe DogWalking, type: :model do
 
     it { expect(subject.scheduled_at).to eq scheduled_at }
   end
+
+  describe '#calculate_price' do
+    it do
+      expect(DogWalkingPrice).to receive(:calculate).with(subject.duration, subject.pets_quantity)
+
+      subject.save
+    end
+  end
 end

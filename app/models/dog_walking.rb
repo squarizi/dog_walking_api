@@ -8,7 +8,7 @@ class DogWalking < ActiveRecord::Base
 
   validates :duration, :latitude, :longitude, :pets_quantity, presence: true
 
-  before_create :parse_scheduled_at
+  before_create :parse_scheduled_at, :calculate_price
 
   scope :today, -> { where(scheduled_at: Time.now..Time.now.end_of_day) }
 
@@ -42,5 +42,9 @@ class DogWalking < ActiveRecord::Base
 
   def parse_scheduled_at
     self.scheduled_at = Time.at(schedule.to_i)
+  end
+
+  def calculate_price
+    self.price = DogWalkingPrice.calculate(duration, pets_quantity)
   end
 end
